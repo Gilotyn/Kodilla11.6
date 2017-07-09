@@ -5,7 +5,7 @@ $(function() {
 		var i = 0;
 		for (i = 0; i < 10; i++) {
 			str += chars[Math.floor(Math.random() * chars.length)];
-    	}
+    		}
 		return str;
 	}
 	
@@ -15,12 +15,12 @@ $(function() {
 		this.name = name;
 		this.$element = createColumn();
 	
-	function createColumn() {
-		var $column = $('<div>').addClass('column');
-		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-		var $columnCardList = $('<ul>').addClass('column-card-list');
-		var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-		var $columnAddCard = $('<button>').addClass('add-card').text('Add card');
+		function createColumn() {
+			var $column = $('<div>').addClass('column');
+			var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
+			var $columnCardList = $('<ul>').addClass('column-card-list');
+			var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+			var $columnAddCard = $('<button>').addClass('add-card').text('Add card');
 		
 	$columnDelete.click(function() {
         self.removeColumn();
@@ -62,7 +62,7 @@ $(function() {
 
 			// Przypięcie zdarzenia
 			$cardDelete.click(function(){
-   		    self.removeCard();
+   		    	self.removeCard();
 			});
 
 			// Składanie i zwracanie karty
@@ -79,44 +79,44 @@ $(function() {
 	
 	
 	var board = {
-    	name: 'Kanban Board',
-    	addColumn: function(column) {
-    		this.$element.append(column.$element);
-    		initSortable();
-    	},
-    	$element: $('#board .column-container')
+    		name: 'Kanban Board',
+    		addColumn: function(column) {
+    			this.$element.append(column.$element);
+    			initSortable();
+    		},
+    		$element: $('#board .column-container')
 	};
 		
 	function initSortable() {
-    	$('.column-card-list').sortable({
-    		connectWith: '.column-card-list',
-    		placeholder: 'card-placeholder'
-    	}).disableSelection();
+    		$('.column-card-list').sortable({
+    			connectWith: '.column-card-list',
+    			placeholder: 'card-placeholder'
+    		}).disableSelection();
 	};
 	
 	
 	$('.create-column')
   		.click(function(){
-		var name = prompt('Enter a column name');
-		var column = new Column(name);
-    		board.addColumn(column);
+			var name = prompt('Enter a column name');
+			var column = new Column(name);
+    			board.addColumn(column);
 	});
    
- // TWORZENIE KOLUMN
-var todoColumn = new Column('To do');
-var doingColumn = new Column('Doing');
-var doneColumn = new Column('Done');
+ 	// TWORZENIE KOLUMN
+	var todoColumn = new Column('To do');
+	var doingColumn = new Column('Doing');
+	var doneColumn = new Column('Done');
 
-// DODAWANIE KOLUMN DO TABLICY
-board.addColumn(todoColumn);
-board.addColumn(doingColumn);
-board.addColumn(doneColumn);
+	// DODAWANIE KOLUMN DO TABLICY
+	board.addColumn(todoColumn);
+	board.addColumn(doingColumn);
+	board.addColumn(doneColumn);
 
-// TWORZENIE NOWYCH EGZEMPLARZY KART
-var card1 = new Card('New task');
-var card2 = new Card('Create kanban boards');
+	// TWORZENIE NOWYCH EGZEMPLARZY KART
+	var card1 = new Card('New task');
+	var card2 = new Card('Create kanban boards');
 
-// DODAWANIE KART DO KOLUMN
-todoColumn.addCard(card1);
-doingColumn.addCard(card2);
+	// DODAWANIE KART DO KOLUMN
+	todoColumn.addCard(card1);
+	doingColumn.addCard(card2);
 });
